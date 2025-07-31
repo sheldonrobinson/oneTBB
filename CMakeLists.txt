@@ -127,6 +127,7 @@ option(TBB_CONTROL_FLOW_GUARD "Enable Control Flow Guard (CFG) during the compil
 option(TBB_FUZZ_TESTING "Enable fuzz testing" OFF)
 option(TBB_INSTALL "Enable installation" ON)
 option(TBB_FILE_TRIM "Enable __FILE__ trim" ON)
+option(TBB_ENABLE_SHARED_LIBS "Build shared libs" ${BUILD_SHARED_LIBS})
 if(LINUX)
 option(TBB_LINUX_SEPARATE_DBG "Enable separation of the debug symbols during the build" OFF)
 endif()
@@ -149,7 +150,7 @@ if (WIN32)
         "Verify signature of a dependency during its dynamic linking at run-time on Windows*" OFF)
 endif()
 
-if (NOT DEFINED BUILD_SHARED_LIBS)
+if (NOT DEFINED BUILD_SHARED_LIBS OR TBB_ENABLE_SHARED_LIBS)
     set(BUILD_SHARED_LIBS ON)
 endif()
 
