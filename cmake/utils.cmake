@@ -41,14 +41,14 @@ macro(tbb_install_target target)
                 COMPONENT runtime
                 OPTIONAL)
 
-        if (BUILD_SHARED_LIBS)
+        if (TBB_ENABLE_SHARED_LIBS)
             install(TARGETS ${target}
                 LIBRARY
                     DESTINATION ${CMAKE_INSTALL_LIBDIR}
                     NAMELINK_ONLY
                     COMPONENT devel)
         endif()
-        if (MSVC AND BUILD_SHARED_LIBS)
+        if (MSVC AND TBB_ENABLE_SHARED_LIBS)
             install(FILES $<TARGET_PDB_FILE:${target}>
                 DESTINATION ${CMAKE_INSTALL_BINDIR}
                 COMPONENT devel

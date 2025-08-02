@@ -31,8 +31,8 @@ target_compile_definitions(tbbmalloc
                            $<$<CONFIG:DEBUG>:TBB_USE_DEBUG>
                            PRIVATE
                            __TBBMALLOC_BUILD
-                           $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:__TBB_DYNAMIC_LOAD_ENABLED=0>
-                           $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:__TBB_SOURCE_DIRECTLY_INCLUDED=1>)
+                           $<$<NOT:$<BOOL:${TBB_ENABLE_SHARED_LIBS}>>:__TBB_DYNAMIC_LOAD_ENABLED=0>
+                           $<$<NOT:$<BOOL:${TBB_ENABLE_SHARED_LIBS}>>:__TBB_SOURCE_DIRECTLY_INCLUDED=1>)
 
 if (NOT ("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "(armv7-a|aarch64|mips|arm64|riscv)" OR
          "${CMAKE_OSX_ARCHITECTURES}" MATCHES "arm64" OR
