@@ -150,7 +150,7 @@ if (WIN32)
         "Verify signature of a dependency during its dynamic linking at run-time on Windows*" OFF)
 endif()
 
-if (NOT DEFINED BUILD_SHARED_LIBS OR TBB_ENABLE_SHARED_LIBS)
+if (NOT DEFINED BUILD_SHARED_LIBS AND TBB_ENABLE_SHARED_LIBS)
     set(BUILD_SHARED_LIBS ON)
 endif()
 
