@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if (NOT TBB_ENABLE_SHARED_LIBS)
+if (NOT BUILD_SHARED_LIBS)
     return()
 endif()
 
