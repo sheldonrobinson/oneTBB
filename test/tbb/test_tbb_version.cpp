@@ -1,5 +1,4 @@
 /*
-    Copyright (c) 2019-2025 Intel Corporation
     Copyright (c) 2025 UXL Foundation Contributors
 
     Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,17 +14,16 @@
     limitations under the License.
 */
 
-{
-global:
-__TBB_internal_initialize_system_topology;
-__TBB_internal_apply_affinity;
-__TBB_internal_restore_affinity;
-__TBB_internal_allocate_binding_handler;
-__TBB_internal_deallocate_binding_handler;
-__TBB_internal_get_default_concurrency;
-__TBB_internal_destroy_system_topology;
-__TBB_internal_set_tbbbind_assertion_handler;
+//! Test for the availability of extensions
+//! \file test_tbb_version.cpp
+//! \brief Test for [configuration.feature_macros] specification
 
-local:
-*;
-};
+#include "tbb/version.h"
+// checking that inclusion of version.h is enough to get TBB_EXT_CUSTOM_ASSERTION_HANDLER
+#if TBB_EXT_CUSTOM_ASSERTION_HANDLER != 202510
+    #error "TBB_EXT_CUSTOM_ASSERTION_HANDLER must be set to 202510"
+#endif
+
+int main() {
+    return 0;
+}
