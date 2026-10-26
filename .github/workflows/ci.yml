@@ -43,7 +43,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -59,7 +59,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -80,7 +80,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -96,6 +96,7 @@ jobs:
       - name: Build documentation
         run: |
           set -e -x -o pipefail
+          mv -f thread_composability_manager/doc/* doc/tcm
           export BUILD_TYPE=${BUILD_TYPE} && sphinx-build doc html
           tar -czvf html.tar.gz html/
       - name: Save docs
@@ -114,7 +115,7 @@ jobs:
     needs: [documentation]
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -148,7 +149,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -225,7 +226,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -279,7 +280,7 @@ jobs:
             cmake_static: -DBUILD_SHARED_LIBS=OFF
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -318,7 +319,7 @@ jobs:
             build_type: debug
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -360,7 +361,7 @@ jobs:
             build_type: relwithdebinfo
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -409,7 +410,7 @@ jobs:
             cmake_static: -DBUILD_SHARED_LIBS=OFF
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -441,13 +442,13 @@ jobs:
             preview: 'ON'
             job_name: windows_cl2026_cxx14_relwithdebinfo_preview=ON
           - os: windows-11-arm
-            generator: Visual Studio 17 2022
+            generator: Visual Studio 18 2026
             c_compiler: cl
             cxx_compiler: cl
             std: 20
             build_type: release
             preview: 'ON'
-            job_name: windows_11_arm_cl2022_cxx20_release_preview=ON-DBUILD_SHARED_LIBS=OFF
+            job_name: windows_11_arm_cl2026_cxx20_release_preview=ON-DBUILD_SHARED_LIBS=OFF
             cmake_static: -DBUILD_SHARED_LIBS=OFF
           - os: windows-2022
             generator: Visual Studio 17 2022
@@ -459,7 +460,7 @@ jobs:
             job_name: windows_cl2022_cxx17_relwithdebinfo_preview=OFF
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -505,7 +506,7 @@ jobs:
             job_name: windows_cl2022_cxx17_relwithdebinfo
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -556,7 +557,7 @@ jobs:
             job_name: windows_cl2022_cxx17_debug
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -613,7 +614,7 @@ jobs:
             preview: 'ON'
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -644,7 +645,7 @@ jobs:
             preview: 'ON'
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -668,13 +669,13 @@ jobs:
       matrix:
         include:
           - os: windows-11-arm
-            generator: Visual Studio 17 2022
+            generator: Visual Studio 18 2026
             c_compiler: cl
             cxx_compiler: cl
             std: 14
             build_type: relwithdebinfo
             preview: 'ON'
-            job_name: examples_windows_11_arm_cl2022_cxx14_relwithdebinfo_preview=ON
+            job_name: examples_windows_11_arm_cl2026_cxx14_relwithdebinfo_preview=ON
           - os: windows-2022
             generator: Visual Studio 17 2022
             c_compiler: cl
@@ -685,7 +686,7 @@ jobs:
             job_name: examples_windows_cl2022_cxx17_relwithdebinfo_preview=OFF
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -722,7 +723,7 @@ jobs:
             cmake_extra: -DTBB_TEST_CXX20_MODULES=ON
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -730,7 +731,7 @@ jobs:
       - name: Install dependencies
         shell: bash
         run: |
-          sudo apt-get update && sudo apt-get install -y ninja-build
+          sudo apt-get update && sudo apt-get install -y ninja-build pkg-config libhwloc-dev hwloc
           if [[ "${{ matrix.cxx_compiler }}" == "clang++" ]]; then
             sudo apt-get install -y libomp-dev
           fi
@@ -738,11 +739,15 @@ jobs:
         run: |
           set -e -x -o pipefail
           mkdir build && cd build
-          cmake -G "${{ matrix.generator }}" -DCMAKE_CXX_STANDARD=${{ matrix.std }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type}} \
-            -DCMAKE_CXX_COMPILER=${{ matrix.cxx_compiler }} -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} \
-            ${{ matrix.cmake_extra }} -DTBB_TEST=OFF -DTBB_DOC_EXAMPLES=ON ..
-          cmake --build . -v --parallel --target build-doc-examples
-          ctest -C ${{ matrix.build_type }} --timeout ${env:TEST_TIMEOUT} --output-on-failure -L doc-examples
+          cmake -G "${{ matrix.generator }}" -DCMAKE_CXX_STANDARD=${{ matrix.std }} \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type}} \
+            -DCMAKE_CXX_COMPILER=${{ matrix.cxx_compiler }} \
+            -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} \
+            ${{ matrix.cmake_extra }} -DTBB_TEST=OFF -DTBB_DOC_EXAMPLES=ON \
+            -DTCM_BUILD=ON -DTCM_TEST=OFF -DTCM_DOC_EXAMPLES=ON ..
+          cmake --build . -v --parallel --target tbbbind_2_5 build-doc-examples tcm-doc-examples
+          ctest -C ${{ matrix.build_type }} --timeout ${env:TEST_TIMEOUT} --output-on-failure \
+                -L "doc-examples"
 
   windows-doc-examples-testing:
     name: doc_examples_${{ matrix.os }}_${{ matrix.cxx_compiler }}_cxx${{ matrix.std }}_${{ matrix.build_type }}_${{ matrix.cmake_extra }}
@@ -761,25 +766,32 @@ jobs:
             cmake_extra: -DTBB_TEST_CXX20_MODULES=ON
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
-
+      - name: Install dependencies
+        run: |
+          vcpkg install hwloc
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Test doc examples
         run: |
           mkdir build && cd build
           cmake -G "${{ matrix.generator }}" -A x64 -DCMAKE_CXX_STANDARD=${{ matrix.std }} `
             -DCMAKE_BUILD_TYPE=${{ matrix.build_type}} -DCMAKE_CXX_COMPILER=${{ matrix.cxx_compiler }} `
-            -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} ${{ matrix.cmake_extra }} -DTBB_TEST=OFF -DTBB_DOC_EXAMPLES=ON ..
+            -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} ${{ matrix.cmake_extra }} `
+            -DCMAKE_TOOLCHAIN_FILE="${env:VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake" `
+            -DTBB_TEST=OFF -DTBB_DOC_EXAMPLES=ON `
+            -DTCM_BUILD=ON -DTCM_TEST=OFF -DTCM_DOC_EXAMPLES=ON ..
           if (!$?) {
-              throw "CMake configuration step of examples from documentation failed, exit code $LastExitCode"
+            throw "CMake configuration step of examples from documentation failed, exit code $LastExitCode"
           }
-          cmake --build . --config ${{ matrix.build_type }} -v --parallel --target build-doc-examples
+          cmake --build . --config ${{ matrix.build_type }} -v --parallel `
+                --target build-doc-examples tcm-doc-examples
           if (!$?) {
-              throw "CMake build step of examples from documentation failed, exit code $LastExitCode"
+            throw "CMake build step of examples from documentation failed, exit code $LastExitCode"
           }
-          ctest -C ${{ matrix.build_type }} --timeout ${env:TEST_TIMEOUT} --output-on-failure -L doc-examples
+          ctest -C ${{ matrix.build_type }} --timeout ${env:TEST_TIMEOUT} --output-on-failure `
+                -L "doc-examples"
           if (!$?) {
-              throw "CTest of examples from documentation failed, exit code $LastExitCode"
+            throw "CTest of examples from documentation failed, exit code $LastExitCode"
           }
